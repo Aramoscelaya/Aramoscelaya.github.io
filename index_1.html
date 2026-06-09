@@ -24,12 +24,10 @@
       --text-muted: #9C9082;
       --border: rgba(120, 105, 90, 0.15);
       --border-strong: rgba(120, 105, 90, 0.25);
-      --accent: #5C8A6E;
-      --accent-light: #E4EFE9;
-      --accent-muted: #3D6B52;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -64,8 +62,6 @@
       text-transform: uppercase;
     }
 
-    .nav-name .dot { color: var(--accent); }
-
     .nav-links {
       display: flex;
       gap: 1.75rem;
@@ -84,31 +80,16 @@
     .hero { margin-bottom: 5rem; }
 
     .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-block;
       font-size: 11px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent-muted);
-      background: var(--accent-light);
-      border: 0.5px solid rgba(92, 138, 110, 0.25);
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border: 0.5px solid var(--border-strong);
       border-radius: 20px;
-      padding: 5px 14px;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-tag-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 2.4s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
+      padding: 4px 14px;
+      margin-bottom: 1.25rem;
     }
 
     .hero h1 {
@@ -116,21 +97,13 @@
       font-weight: 300;
       color: var(--text-primary);
       line-height: 1.22;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       letter-spacing: -0.025em;
     }
 
     .hero h1 strong {
       font-weight: 500;
       color: var(--warm-brown-dark);
-    }
-
-    .hero-accent {
-      width: 28px;
-      height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
-      margin-bottom: 1.25rem;
     }
 
     .hero-sub {
@@ -225,7 +198,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--sage));
+      background: linear-gradient(90deg, var(--clay), var(--sage));
       opacity: 0;
       transition: opacity 0.25s;
     }
@@ -242,42 +215,6 @@
       justify-content: center;
       margin-bottom: 1rem;
       font-size: 19px;
-    }
-
-    /* Imagen de preview del proyecto */
-    .project-preview {
-      width: 100%;
-      height: 140px;
-      border-radius: 8px;
-      background: var(--sage-light);
-      margin-bottom: 1rem;
-      overflow: hidden;
-      border: 0.5px solid var(--border);
-    }
-
-    .project-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-
-    .project-card:hover .project-preview img {
-      transform: scale(1.03);
-    }
-
-    /* Placeholder cuando no hay imagen */
-    .project-preview-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
     }
 
     .project-title {
@@ -310,22 +247,10 @@
       padding: 3px 8px;
     }
 
-    .project-footer {
+    .project-link-row {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       margin-top: 1rem;
-      padding-top: 0.75rem;
-      border-top: 0.5px solid var(--border);
-    }
-
-    .project-status {
-      font-size: 11px;
-      color: var(--accent-muted);
-      background: var(--accent-light);
-      border-radius: 20px;
-      padding: 2px 10px;
-      letter-spacing: 0.05em;
     }
 
     .link-pill {
@@ -354,10 +279,7 @@
       font-size: 12px;
       color: var(--text-secondary);
       font-family: 'DM Mono', monospace;
-      transition: border-color 0.2s;
     }
-
-    .stack-item:hover { border-color: var(--border-strong); }
 
     .stack-item span {
       display: block;
@@ -448,7 +370,7 @@
   <main class="portfolio">
 
     <nav class="nav">
-      <span class="nav-name">AR<span class="dot"> · </span>Dev</span>
+      <span class="nav-name">AR · Dev</span>
       <ul class="nav-links">
         <li><a href="#proyectos">proyectos</a></li>
         <li><a href="#stack">stack</a></li>
@@ -457,12 +379,8 @@
     </nav>
 
     <section class="hero">
-      <span class="hero-tag">
-        <span class="hero-tag-dot"></span>
-        Disponible para proyectos freelance
-      </span>
+      <span class="hero-tag">Disponible para proyectos freelance</span>
       <h1>Desarrollo de software<br><strong>backend y web</strong></h1>
-      <div class="hero-accent"></div>
       <p class="hero-sub">
         Soy Alejandro Ramos, desarrollador con más de 6 años de experiencia
         construyendo APIs, sistemas web y aplicaciones a medida.
@@ -484,11 +402,9 @@
       <p class="section-label">Proyectos</p>
       <div class="projects-grid">
 
+        <!-- AmiPattern -->
         <a href="https://github.com/Aramoscelaya/amipattern" class="project-card" target="_blank" rel="noopener">
-          <div class="project-preview">
-            <!-- Cuando tengas screenshot: <img src="assets/screenshots/amipattern.png" alt="Vista previa de AmiPattern" /> -->
-            <div class="project-preview-placeholder">🧶</div>
-          </div>
+          <div class="project-icon">🧶</div>
           <p class="project-title">AmiPattern</p>
           <p class="project-desc">
             Sistema web para gestión de patrones de crochet, inventario de materiales,
@@ -500,8 +416,7 @@
             <span class="tag">PostgreSQL</span>
             <span class="tag">PWA</span>
           </div>
-          <div class="project-footer">
-            <span class="project-status">En desarrollo</span>
+          <div class="project-link-row">
             <span class="link-pill">
               ver en GitHub
               <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
@@ -509,20 +424,23 @@
           </div>
         </a>
 
+        <!-- Placeholder para próximo proyecto — reemplázalo cuando tengas otro repo -->
         <!--
         <a href="https://github.com/Aramoscelaya/NOMBRE_REPO" class="project-card" target="_blank" rel="noopener">
-          <div class="project-preview">
-            <img src="assets/screenshots/nombre-proyecto.png" alt="Vista previa de Nombre del proyecto" />
-          </div>
+          <div class="project-icon">💻</div>
           <p class="project-title">Nombre del proyecto</p>
-          <p class="project-desc">Descripción breve de qué hace y para qué sirve.</p>
+          <p class="project-desc">
+            Descripción breve de qué hace y para qué sirve.
+          </p>
           <div class="project-tags">
             <span class="tag">PHP</span>
             <span class="tag">MySQL</span>
           </div>
-          <div class="project-footer">
-            <span class="project-status">Producción</span>
-            <span class="link-pill">ver en GitHub <i class="ti ti-arrow-up-right" aria-hidden="true"></i></span>
+          <div class="project-link-row">
+            <span class="link-pill">
+              ver en GitHub
+              <i class="ti ti-arrow-up-right" aria-hidden="true"></i>
+            </span>
           </div>
         </a>
         -->
